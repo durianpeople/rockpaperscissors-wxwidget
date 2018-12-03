@@ -1,5 +1,7 @@
 #include <wx/wxprec.h>
 #include "MainApp.h"
+#include "MainFrame.h"
+#include "HomePanel.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -17,9 +19,12 @@ MainApp::~MainApp()
 }
 
 bool MainApp::OnInit() {
-	wxFrame* mainFrame = new wxFrame(nullptr, wxID_ANY, wxT("Awesome Rock Paper Scissors"), wxDefaultPosition, wxSize(450, 800));
-	mainFrame->Center();
+	wxFrame* mainFrame = new MainFrame();
+	
+	wxPanel* mainPanel = new HomePanel(mainFrame);
+	
 	mainFrame->Show(true);
+	
 	return true;
 }
 

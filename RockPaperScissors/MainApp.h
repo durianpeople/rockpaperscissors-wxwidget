@@ -6,4 +6,3 @@ public:
 	virtual ~MainApp();
 	virtual bool OnInit() override;
 };
-
