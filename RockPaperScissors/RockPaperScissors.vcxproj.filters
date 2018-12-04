@@ -24,7 +24,7 @@
     <ClInclude Include="MainFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HomePanel.h">
+    <ClInclude Include="DrawablePanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HomePanel.cpp">
+    <ClCompile Include="DrawablePanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
