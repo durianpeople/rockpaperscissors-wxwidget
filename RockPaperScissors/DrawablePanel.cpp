@@ -1,27 +1,23 @@
 #include "DrawablePanel.h"
-#ifdef _DEBUG
-#pragma comment(lib, "wxbase31ud.lib")
-#else
-#pragma comment(lib, "wxbase31u.lib")
-#endif
+#include "template_wxbody.h"
 
 BEGIN_EVENT_TABLE(DrawablePanel, wxPanel)
 EVT_PAINT(DrawablePanel::paintEvent)
 END_EVENT_TABLE()
 
-DrawablePanel::DrawablePanel(wxWindow* parentFrame, wxWindowID windowID, wxPoint &pos, wxSize &size) :
-	wxPanel(parentFrame, wxID_ANY, wxDefaultPosition, wxDefaultSize)
+DrawablePanel::DrawablePanel(wxWindow* parent, wxWindowID winid, const wxPoint &pos, const wxSize &size) :
+	wxPanel(parent, winid, pos, size)
 {
-	SetBackgroundColour(wxColour("green"));
+	
+}
+
+DrawablePanel::~DrawablePanel()
+{
 }
 
 void DrawablePanel::render(wxDC & dc)
 {
 	//gambar disini pake variabel dc
-}
-
-DrawablePanel::~DrawablePanel()
-{
 }
 
 void DrawablePanel::paintEvent(wxPaintEvent & evt)

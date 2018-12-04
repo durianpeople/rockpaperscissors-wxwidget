@@ -20,6 +20,8 @@ MainApp::~MainApp()
 
 bool MainApp::OnInit() {
 	wxFrame* mainFrame = new MainFrame();
+	wxPanel* panel = new DrawablePanel(mainFrame, wxID_ANY, wxDefaultPosition, wxDefaultSize);
+	panel->SetBackgroundColour(wxColor("green"));
 	
 	mainFrame->Show(true);
 	

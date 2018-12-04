@@ -119,6 +119,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DrawablePanel.h" />
+    <ClInclude Include="template_wxbody.h" />
+    <ClInclude Include="template_wxheader.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="resource.h" />
