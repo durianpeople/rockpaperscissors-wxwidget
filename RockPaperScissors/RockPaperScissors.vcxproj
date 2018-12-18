@@ -118,17 +118,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="DrawablePanel.h" />
+    <ClInclude Include="ScreenSplash.h" />
+    <ClInclude Include="ScreenWelcome.h" />
     <ClInclude Include="template_wxbody.h" />
     <ClInclude Include="template_wxheader.h" />
     <ClInclude Include="MainApp.h" />
-    <ClInclude Include="MainFrame.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DrawablePanel.cpp" />
     <ClCompile Include="MainApp.cpp" />
-    <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="ScreenSplash.cpp" />
+    <ClCompile Include="ScreenWelcome.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RockPaperScissors.rc" />

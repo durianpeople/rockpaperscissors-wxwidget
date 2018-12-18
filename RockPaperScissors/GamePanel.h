@@ -1,12 +1,11 @@
 #pragma once
-#include <wx\wxprec.h>
+#include "template_wxheader.h"
 #include "DrawablePanel.h"
 
 class GamePanel : public DrawablePanel
 {
 public:
-	GamePanel(wxWindow * parentFrame, wxWindowID windowID, wxPoint & pos, wxSize & size);
+	GamePanel(wxWindow* parent, wxWindowID winid, const wxPoint &pos, const wxSize &size);
 	~GamePanel();
 	void render(wxDC& dc);
 };
-

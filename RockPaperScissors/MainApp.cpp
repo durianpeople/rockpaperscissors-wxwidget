@@ -1,7 +1,5 @@
-#include <wx/wxprec.h>
 #include "MainApp.h"
-#include "MainFrame.h"
-#include "DrawablePanel.h"
+#include "ScreenSplash.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -13,19 +11,33 @@ MainApp::MainApp()
 {
 }
 
+bool MainApp::OnInit() {
+	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, {450,800}, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
+	mainFrame->Center();
+	mainFrame->SetBackgroundColour(wxColor("black"));
+	mainFrame->Show(true);
 
-MainApp::~MainApp()
-{
+	ScreenSplash(this);
+
+	return true;
 }
 
-bool MainApp::OnInit() {
-	wxFrame* mainFrame = new MainFrame();
-	wxPanel* panel = new DrawablePanel(mainFrame, wxID_ANY, wxDefaultPosition, wxDefaultSize);
-	panel->SetBackgroundColour(wxColor("green"));
-	
-	mainFrame->Show(true);
-	
-	return true;
+wxPanel* MainApp::newPanel()
+{
+	wxPanel* old = nullptr;
+	if (currentPanel != nullptr) {
+		mainFrame->RemoveChild(currentPanel);
+		old = currentPanel;
+	}
+	currentPanel = new wxPanel(mainFrame, wxID_ANY, wxDefaultPosition, {450,800});
+	currentPanel->Show(true);
+	mainFrame->Refresh();
+	if(old != nullptr) delete old;
+	return currentPanel;
+}
+
+void MainApp::r() {
+	mainFrame->Refresh();
 }
 
 wxIMPLEMENT_APP(MainApp);

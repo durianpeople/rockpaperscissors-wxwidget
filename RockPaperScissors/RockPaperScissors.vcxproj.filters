@@ -21,16 +21,16 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MainFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="template_wxheader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="template_wxbody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DrawablePanel.h">
+    <ClInclude Include="ScreenSplash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenWelcome.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -38,10 +38,10 @@
     <ClCompile Include="MainApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MainFrame.cpp">
+    <ClCompile Include="ScreenSplash.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawablePanel.cpp">
+    <ClCompile Include="ScreenWelcome.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
