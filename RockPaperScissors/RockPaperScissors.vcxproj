@@ -118,20 +118,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FallingObject.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="ScreenSplash.h" />
-    <ClInclude Include="ScreenWelcome.h" />
+    <ClInclude Include="DrawablePanel.h" />
+    <ClInclude Include="FallingMovable.h" />
+    <ClInclude Include="MovableObject.h" />
     <ClInclude Include="template_wxbody.h" />
     <ClInclude Include="template_wxheader.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FallingObject.cpp" />
+    <ClCompile Include="DrawablePanel.cpp" />
+    <ClCompile Include="FallingMovable.cpp" />
     <ClCompile Include="MainApp.cpp" />
-    <ClCompile Include="ScreenSplash.cpp" />
-    <ClCompile Include="ScreenWelcome.cpp" />
+    <ClCompile Include="MovableObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RockPaperScissors.rc" />

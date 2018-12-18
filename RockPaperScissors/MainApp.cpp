@@ -1,5 +1,6 @@
 #include "MainApp.h"
-#include "ScreenSplash.h"
+#include "DrawablePanel.h"
+#include "FallingMovable.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -16,30 +17,13 @@ bool MainApp::OnInit() {
 	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, {450,800}, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
 	mainFrame->Center();
 	mainFrame->SetBackgroundColour(wxColor("black"));
+
+	DrawablePanel* drawable = new DrawablePanel(mainFrame, wxID_ANY, wxDefaultPosition, { 450,800 });
+	MovableObject* fallingGreen = new FallingMovable(wxDefaultPosition, { 10,10 });
+	drawable->registerObject(fallingGreen);
+
 	mainFrame->Show();
-
-	ScreenSplash* splash = new ScreenSplash(this);
-
 	return true;
-}
-
-wxPanel* MainApp::newPanel()
-{
-	wxDisableAsserts();
-	wxPanel* old = nullptr;
-	if (currentPanel != nullptr) {
-		mainFrame->RemoveChild(currentPanel);
-		old = currentPanel;
-	}
-	currentPanel = new wxPanel(mainFrame, wxID_ANY, wxDefaultPosition, {450,800});
-	currentPanel->Show();
-	mainFrame->Refresh();
-	if(old != nullptr) delete old;
-	return currentPanel;
-}
-
-void MainApp::r() {
-	mainFrame->Refresh();
 }
 
 wxIMPLEMENT_APP(MainApp);
