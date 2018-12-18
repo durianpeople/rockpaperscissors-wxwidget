@@ -3,6 +3,6 @@
 ScreenWelcome::ScreenWelcome(MainApp* app)
 {
 	wxPanel* panel = app->newPanel();
-	panel->SetBackgroundColour(wxColor("BLUE"));
+	panel->SetBackgroundColour(wxColor("WHITE"));
 	app->r();
 }
