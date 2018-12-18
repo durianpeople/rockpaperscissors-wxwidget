@@ -1,12 +1,12 @@
 #include "ScreenSplash.h"
 #include "ScreenWelcome.h"
 
-#include "wxImagePanel.h"
+#include "Object.h"
 
 float scale = 0;
 int left = 0;
 int millis = 0;
-wxImagePanel* drawPane;
+Object* drawPane;
 
 ScreenSplash::ScreenSplash(MainApp* main)
 {
@@ -14,7 +14,7 @@ ScreenSplash::ScreenSplash(MainApp* main)
 	panel->SetBackgroundColour(wxColor("black"));
 	main->r();
 	mainapp = main;
-	drawPane = new wxImagePanel(
+	drawPane = new Object(
 		panel, 
 		wxT("E:\\VisualStudio\\RPS\\Debug\\splash.png"), 
 		wxBITMAP_TYPE_PNG, 

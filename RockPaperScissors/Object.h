@@ -1,7 +1,7 @@
 #include <wx/wx.h>
 #include <wx/sizer.h>
 
-class wxImagePanel : public wxPanel
+class Object : public wxPanel
 {
 	wxImage image;
 	wxBitmap resized;
@@ -10,13 +10,14 @@ class wxImagePanel : public wxPanel
 	bool scalef;
 
 public:
-	wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float scale = 1);
+	Object(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float scale = 1);
 
 	void paintEvent(wxPaintEvent & evt);
 	void paintNow();
 	void OnSize(wxSizeEvent& event);
 	void render(wxDC& dc);
 	void scale(float scale);
+	void move(wxPoint &pt);
 
 	// some useful events
 	/*
@@ -33,40 +34,19 @@ public:
 	DECLARE_EVENT_TABLE()
 };
 
-
-BEGIN_EVENT_TABLE(wxImagePanel, wxPanel)
-// some useful events
-/*
- EVT_MOTION(wxImagePanel::mouseMoved)
- EVT_LEFT_DOWN(wxImagePanel::mouseDown)
- EVT_LEFT_UP(wxImagePanel::mouseReleased)
- EVT_RIGHT_DOWN(wxImagePanel::rightClick)
- EVT_LEAVE_WINDOW(wxImagePanel::mouseLeftWindow)
- EVT_KEY_DOWN(wxImagePanel::keyPressed)
- EVT_KEY_UP(wxImagePanel::keyReleased)
- EVT_MOUSEWHEEL(wxImagePanel::mouseWheelMoved)
- */
-
- // catch paint events
-	EVT_PAINT(wxImagePanel::paintEvent)
-	//Size event
-	EVT_SIZE(wxImagePanel::OnSize)
-	END_EVENT_TABLE()
-
-
 	// some useful events
 	/*
-	 void wxImagePanel::mouseMoved(wxMouseEvent& event) {}
-	 void wxImagePanel::mouseDown(wxMouseEvent& event) {}
-	 void wxImagePanel::mouseWheelMoved(wxMouseEvent& event) {}
-	 void wxImagePanel::mouseReleased(wxMouseEvent& event) {}
-	 void wxImagePanel::rightClick(wxMouseEvent& event) {}
-	 void wxImagePanel::mouseLeftWindow(wxMouseEvent& event) {}
-	 void wxImagePanel::keyPressed(wxKeyEvent& event) {}
-	 void wxImagePanel::keyReleased(wxKeyEvent& event) {}
+	 void Object::mouseMoved(wxMouseEvent& event) {}
+	 void Object::mouseDown(wxMouseEvent& event) {}
+	 void Object::mouseWheelMoved(wxMouseEvent& event) {}
+	 void Object::mouseReleased(wxMouseEvent& event) {}
+	 void Object::rightClick(wxMouseEvent& event) {}
+	 void Object::mouseLeftWindow(wxMouseEvent& event) {}
+	 void Object::keyPressed(wxKeyEvent& event) {}
+	 void Object::keyReleased(wxKeyEvent& event) {}
 	 */
 
-wxImagePanel::wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float s) :
+Object::Object(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float s) :
 	wxPanel(parent, wxID_ANY, position, size)
 {
 	// load the file... ideally add a check to see if loading was successful
@@ -85,7 +65,7 @@ wxImagePanel::wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, 
  * calling Refresh()/Update().
  */
 
-void wxImagePanel::paintEvent(wxPaintEvent & evt)
+void Object::paintEvent(wxPaintEvent & evt)
 {
 	// depending on your system you may need to look at double-buffered dcs
 	wxPaintDC dc(this);
@@ -100,7 +80,7 @@ void wxImagePanel::paintEvent(wxPaintEvent & evt)
  * background, and expects you will redraw it when the window comes
  * back (by sending a paint event).
  */
-void wxImagePanel::paintNow()
+void Object::paintNow()
 {
 	// depending on your system you may need to look at double-buffered dcs
 	wxClientDC dc(this);
@@ -114,7 +94,7 @@ void wxImagePanel::paintNow()
  * method so that it can work no matter what type of DC
  * (e.g. wxPaintDC or wxClientDC) is used.
  */
-void wxImagePanel::render(wxDC&  dc)
+void Object::render(wxDC&  dc)
 {
 	int neww, newh;
 	dc.GetSize(&neww, &newh);
@@ -136,19 +116,44 @@ void wxImagePanel::render(wxDC&  dc)
 	}
 }
 
-void wxImagePanel::scale(float s)
+void Object::scale(float s)
 {
 	this->scalenum = s;
 	scalef = true;
 	paintNow();
 }
 
+inline void Object::move(wxPoint & pt)
+{
+	this->SetPosition({ pt.x + this->GetPosition().x, pt.y + this->GetPosition().y });
+}
+
 /*
  * Here we call refresh to tell the panel to draw itself again.
  * So when the user resizes the image panel the image should be resized too.
  */
-void wxImagePanel::OnSize(wxSizeEvent& event) {
+void Object::OnSize(wxSizeEvent& event) {
 	Refresh();
 	//skip the event.
 	event.Skip();
 }
+
+BEGIN_EVENT_TABLE(Object, wxPanel)
+// some useful events
+/*
+ EVT_MOTION(Object::mouseMoved)
+ EVT_LEFT_DOWN(Object::mouseDown)
+ EVT_LEFT_UP(Object::mouseReleased)
+ EVT_RIGHT_DOWN(Object::rightClick)
+ EVT_LEAVE_WINDOW(Object::mouseLeftWindow)
+ EVT_KEY_DOWN(Object::keyPressed)
+ EVT_KEY_UP(Object::keyReleased)
+ EVT_MOUSEWHEEL(Object::mouseWheelMoved)
+ */
+
+ // catch paint events
+	EVT_PAINT(Object::paintEvent)
+	//Size event
+	EVT_SIZE(Object::OnSize)
+	END_EVENT_TABLE()
+
