@@ -13,7 +13,6 @@ bool MainApp::OnInit() {
 	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, {450,800}, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
 	mainFrame->Center();
 	mainFrame->SetBackgroundColour(wxColor("black"));
-	mainFrame->Show();
 
 	(new SplashActivity(mainFrame))->Show();
 	mainFrame->Refresh();
