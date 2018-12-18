@@ -17,7 +17,7 @@ public:
 	void OnSize(wxSizeEvent& event);
 	void render(wxDC& dc);
 	virtual void scale(float scale);
-	virtual void move(wxPoint &pt);
+	virtual void move(wxPoint pt);
 	bool collideWith(Object* obj);
 
 	// some useful events
@@ -124,7 +124,7 @@ void Object::scale(float s)
 	paintNow();
 }
 
-inline void Object::move(wxPoint & pt)
+inline void Object::move(wxPoint pt)
 {
 	this->SetPosition({ pt.x + this->GetPosition().x, pt.y + this->GetPosition().y });
 }

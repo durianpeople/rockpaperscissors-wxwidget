@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="FallingObject.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ScreenSplash.h" />
     <ClInclude Include="ScreenWelcome.h" />
@@ -127,6 +128,7 @@
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FallingObject.cpp" />
     <ClCompile Include="MainApp.cpp" />
     <ClCompile Include="ScreenSplash.cpp" />
     <ClCompile Include="ScreenWelcome.cpp" />
