@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="wxImagePanel.h" />
     <ClInclude Include="ScreenSplash.h" />
     <ClInclude Include="ScreenWelcome.h" />
     <ClInclude Include="template_wxbody.h" />
@@ -132,6 +133,11 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RockPaperScissors.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Debug\logo_big.png">
+      <DeploymentContent>false</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
