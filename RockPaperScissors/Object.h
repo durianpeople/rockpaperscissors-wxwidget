@@ -1,3 +1,6 @@
+#ifndef _OBJECT_H_
+#define _OBJECT_H_
+
 #include <wx/wx.h>
 #include <wx/sizer.h>
 
@@ -6,8 +9,8 @@ class Object : public wxPanel
 	wxImage image;
 	wxBitmap resized;
 	int w, h;
-	float scalenum;
-	bool scalef;
+	float scalenum = 1;
+	bool scalef = false;
 
 public:
 	Object(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float scale = 1);
@@ -169,3 +172,4 @@ BEGIN_EVENT_TABLE(Object, wxPanel)
 	EVT_SIZE(Object::OnSize)
 	END_EVENT_TABLE()
 
+#endif

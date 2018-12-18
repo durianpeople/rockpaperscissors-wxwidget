@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{1666DA6A-6D34-4A16-B89F-545C3C52D742}</ProjectGuid>
     <RootNamespace>RockPaperScissors</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -80,6 +80,10 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link />
+    <Link>
+      <AdditionalOptions>/FORCE:MULTIPLE %(AdditionalOptions)</AdditionalOptions>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -118,20 +122,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FallingObject.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="ScreenSplash.h" />
-    <ClInclude Include="ScreenWelcome.h" />
+    <ClInclude Include="SplashActivity.h" />
     <ClInclude Include="template_wxbody.h" />
     <ClInclude Include="template_wxheader.h" />
     <ClInclude Include="MainApp.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="WelcomeActivity.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FallingObject.cpp" />
     <ClCompile Include="MainApp.cpp" />
-    <ClCompile Include="ScreenSplash.cpp" />
-    <ClCompile Include="ScreenWelcome.cpp" />
+    <ClCompile Include="SplashActivity.cpp" />
+    <ClCompile Include="WelcomeActivity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RockPaperScissors.rc" />

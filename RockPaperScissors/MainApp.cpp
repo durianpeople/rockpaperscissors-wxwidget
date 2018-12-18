@@ -1,5 +1,5 @@
 #include "MainApp.h"
-#include "ScreenSplash.h"
+#include "SplashActivity.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -7,39 +7,18 @@
 #pragma comment(lib, "wxbase31u.lib")
 #endif
 
-MainApp::MainApp()
-{
-}
-
 bool MainApp::OnInit() {
+	wxDisableAsserts();
 	wxInitAllImageHandlers();
 	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, {450,800}, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
 	mainFrame->Center();
 	mainFrame->SetBackgroundColour(wxColor("black"));
 	mainFrame->Show();
 
-	ScreenSplash* splash = new ScreenSplash(this);
+	(new SplashActivity(mainFrame))->Show();
+	mainFrame->Refresh();
 
 	return true;
-}
-
-wxPanel* MainApp::newPanel()
-{
-	wxDisableAsserts();
-	wxPanel* old = nullptr;
-	if (currentPanel != nullptr) {
-		mainFrame->RemoveChild(currentPanel);
-		old = currentPanel;
-	}
-	currentPanel = new wxPanel(mainFrame, wxID_ANY, wxDefaultPosition, {450,800});
-	currentPanel->Show();
-	mainFrame->Refresh();
-	if(old != nullptr) delete old;
-	return currentPanel;
-}
-
-void MainApp::r() {
-	mainFrame->Refresh();
 }
 
 wxIMPLEMENT_APP(MainApp);
