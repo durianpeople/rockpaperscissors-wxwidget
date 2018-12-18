@@ -4,6 +4,7 @@
 #include "wxImagePanel.h"
 
 float scale = 0;
+int left = 0;
 int millis = 0;
 wxImagePanel* drawPane;
 
@@ -31,9 +32,11 @@ void ScreenSplash::Notify()
 	millis++;
 	if(millis > 50){
 		scale += .033F;
-		drawPane->scale(scale);
+		left += 10;
+		drawPane->scale(1);
+	}else if(millis > 150) {
+		new ScreenWelcome(mainapp);
 		if (scale >= 1) Stop();
-		//new ScreenWelcome(mainapp);
 	}
 }
 
