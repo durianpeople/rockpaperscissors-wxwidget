@@ -6,14 +6,17 @@ class wxImagePanel : public wxPanel
 	wxImage image;
 	wxBitmap resized;
 	int w, h;
+	float scalenum;
+	bool scalef;
 
 public:
-	wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size);
+	wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float scale = 1);
 
 	void paintEvent(wxPaintEvent & evt);
 	void paintNow();
 	void OnSize(wxSizeEvent& event);
 	void render(wxDC& dc);
+	void scale(float scale);
 
 	// some useful events
 	/*
@@ -63,13 +66,17 @@ BEGIN_EVENT_TABLE(wxImagePanel, wxPanel)
 	 void wxImagePanel::keyReleased(wxKeyEvent& event) {}
 	 */
 
-wxImagePanel::wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size) :
+wxImagePanel::wxImagePanel(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float s) :
 	wxPanel(parent, wxID_ANY, position, size)
 {
 	// load the file... ideally add a check to see if loading was successful
 	image.LoadFile(file, format);
 	w = -1;
 	h = -1;
+	if (s != 1) {
+		this->scalenum = s;
+		scalef = true;
+	}
 }
 
 /*
@@ -100,6 +107,8 @@ void wxImagePanel::paintNow()
 	render(dc);
 }
 
+
+
 /*
  * Here we do the actual rendering. I put it in a separate
  * method so that it can work no matter what type of DC
@@ -110,16 +119,28 @@ void wxImagePanel::render(wxDC&  dc)
 	int neww, newh;
 	dc.GetSize(&neww, &newh);
 
-	if (neww != w || newh != h)
+	if (neww != w || newh != h || scalef)
 	{
-		resized = wxBitmap(image.Scale(neww, newh /*, wxIMAGE_QUALITY_HIGH*/));
+		resized = wxBitmap(image.Scale(neww * scalenum, newh * scalenum /*, wxIMAGE_QUALITY_HIGH*/));
 		w = neww;
 		h = newh;
-		dc.DrawBitmap(resized, 0, 0, false);
+		if (scalef) {
+			dc.DrawBitmap(resized, neww/2 - (neww * scalenum /2) , newh/2 -(newh * scalenum / 2), false);
+		}
+		else {
+			dc.DrawBitmap(resized, 0, 0, false);
+		}
 	}
 	else {
 		dc.DrawBitmap(resized, 0, 0, false);
 	}
+}
+
+void wxImagePanel::scale(float s)
+{
+	this->scalenum = s;
+	scalef = true;
+	paintNow();
 }
 
 /*

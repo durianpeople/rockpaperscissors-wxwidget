@@ -19,20 +19,20 @@ bool MainApp::OnInit() {
 	mainFrame->Show();
 
 	ScreenSplash* splash = new ScreenSplash(this);
-	splash->StartOnce(1000);
 
 	return true;
 }
 
 wxPanel* MainApp::newPanel()
 {
+	wxDisableAsserts();
 	wxPanel* old = nullptr;
 	if (currentPanel != nullptr) {
 		mainFrame->RemoveChild(currentPanel);
 		old = currentPanel;
 	}
 	currentPanel = new wxPanel(mainFrame, wxID_ANY, wxDefaultPosition, {450,800});
-	currentPanel->Show(true);
+	currentPanel->Show();
 	mainFrame->Refresh();
 	if(old != nullptr) delete old;
 	return currentPanel;

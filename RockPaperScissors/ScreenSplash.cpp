@@ -3,25 +3,37 @@
 
 #include "wxImagePanel.h"
 
+float scale = 0;
+int millis = 0;
+wxImagePanel* drawPane;
+
 ScreenSplash::ScreenSplash(MainApp* main)
 {
 	panel = main->newPanel();
-	panel->SetBackgroundColour(wxColor("GREEN"));
+	panel->SetBackgroundColour(wxColor("black"));
 	main->r();
 	mainapp = main;
-	wxImagePanel* drawPane = new wxImagePanel(
+	drawPane = new wxImagePanel(
 		panel, 
-		wxT("E:\\VisualStudio\\RPS\\Debug\\logo_big.png"), 
+		wxT("E:\\VisualStudio\\RPS\\Debug\\splash.png"), 
 		wxBITMAP_TYPE_PNG, 
-		{ 0,0 },
-		{450,800}
+		{ -10,0 },
+		{450,800},
+		scale
 	);
 	main->r();
+	Start(1);
 }
 
 
 void ScreenSplash::Notify()
 {
-	new ScreenWelcome(mainapp);
+	millis++;
+	if(millis > 50){
+		scale += .033F;
+		drawPane->scale(scale);
+		if (scale >= 1) Stop();
+		//new ScreenWelcome(mainapp);
+	}
 }
 
