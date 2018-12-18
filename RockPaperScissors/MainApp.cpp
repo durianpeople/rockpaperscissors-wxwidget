@@ -18,7 +18,6 @@ bool MainApp::OnInit() {
 	mainFrame->Show(true);
 
 	ScreenSplash splash(this);
-	splash.Init(this);
 	splash.StartOnce(1000);
 
 	return true;
