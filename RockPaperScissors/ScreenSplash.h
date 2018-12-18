@@ -1,12 +1,11 @@
 #pragma once
 #include "MainApp.h"
 
-class ScreenSplash
+class ScreenSplash : public wxTimer
 {
 private:
 	MainApp* mainapp;
 	wxPanel* panel;
-	wxTimer* timer;
 public:
 	const int TIMERID = 1;
 	ScreenSplash(MainApp* main);

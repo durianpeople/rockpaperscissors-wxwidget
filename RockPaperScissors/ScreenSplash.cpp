@@ -7,12 +7,11 @@ ScreenSplash::ScreenSplash(MainApp* main)
 	panel->SetBackgroundColour(wxColor("GREEN"));
 	main->r();
 	mainapp = main;
-	new ScreenWelcome(mainapp);
 }
 
 
 void ScreenSplash::Notify()
 {
-	int i = 0;
+	new ScreenWelcome(mainapp);
 }
 

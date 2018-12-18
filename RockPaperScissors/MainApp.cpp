@@ -17,7 +17,9 @@ bool MainApp::OnInit() {
 	mainFrame->SetBackgroundColour(wxColor("black"));
 	mainFrame->Show(true);
 
-	ScreenSplash(this);
+	ScreenSplash splash(this);
+	splash.Init(this);
+	splash.StartOnce(1000);
 
 	return true;
 }
