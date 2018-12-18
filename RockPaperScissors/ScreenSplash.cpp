@@ -30,13 +30,13 @@ ScreenSplash::ScreenSplash(MainApp* main)
 void ScreenSplash::Notify()
 {
 	millis++;
-	if(millis > 50){
+	if(millis > 50 && scale < 1){
 		scale += .033F;
 		left += 10;
-		drawPane->scale(1);
+		drawPane->scale(scale);
 	}else if(millis > 150) {
 		new ScreenWelcome(mainapp);
-		if (scale >= 1) Stop();
+		Stop();
 	}
 }
 
