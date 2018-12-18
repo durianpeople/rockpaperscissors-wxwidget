@@ -27,13 +27,13 @@
     <ClInclude Include="template_wxbody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DrawablePanel.h">
+    <ClInclude Include="Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MovableObject.h">
+    <ClInclude Include="SplashActivity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FallingMovable.h">
+    <ClInclude Include="WelcomeActivity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,13 +41,10 @@
     <ClCompile Include="MainApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DrawablePanel.cpp">
+    <ClCompile Include="SplashActivity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovableObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FallingMovable.cpp">
+    <ClCompile Include="WelcomeActivity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

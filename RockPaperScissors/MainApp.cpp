@@ -1,6 +1,5 @@
 #include "MainApp.h"
-#include "DrawablePanel.h"
-#include "FallingMovable.h"
+#include "SplashActivity.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -8,21 +7,16 @@
 #pragma comment(lib, "wxbase31u.lib")
 #endif
 
-MainApp::MainApp()
-{
-}
-
 bool MainApp::OnInit() {
+	wxDisableAsserts();
 	wxInitAllImageHandlers();
 	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, {450,800}, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
 	mainFrame->Center();
 	mainFrame->SetBackgroundColour(wxColor("black"));
 
-	DrawablePanel* drawable = new DrawablePanel(mainFrame, wxID_ANY, wxDefaultPosition, { 450,800 });
-	MovableObject* fallingGreen = new FallingMovable(wxDefaultPosition, { 10,10 });
-	drawable->registerObject(fallingGreen);
+	(new SplashActivity(mainFrame))->Show();
+	mainFrame->Refresh();
 
-	mainFrame->Show();
 	return true;
 }
 
