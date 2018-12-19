@@ -24,8 +24,10 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	this->parent = parent;
 
 	//add event listener for parent
-	parent->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(GamePlayActivity::keydown_func));
-	parent->Connect(wxEVT_KEY_UP, wxKeyEventHandler(GamePlayActivity::keyup_func));
+	//this->Bind(wxEVT_CHAR_HOOK, &GamePlayActivity::OnKeyDown, this);
+	this->Bind(wxEVT_KEY_DOWN, &GamePlayActivity::keydown_func, this);
+	//this->Bind(wxEVT_KEY_UP, &GamePlayActivity::keyup_func, this);
+	this->SetFocus();
 	
 	drawGameSet();
 
@@ -81,17 +83,22 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 	gspap += gspap >= 2 ? -2 : 1;
 }
 
+void GamePlayActivity::OnKeyDown(wxKeyEvent & event)
+{
+	int i = 1;
+}
+
 void GamePlayActivity::keydown_func(wxKeyEvent & event)
 {
 	switch (event.GetKeyCode()) {
 	case WXK_LEFT:
-		pad1->scale(1);
+		this->pad1->scale(1);
 		break;
 	case WXK_DOWN:
-		pad2->scale(1);
+		this->pad2->scale(1);
 		break;
 	case WXK_RIGHT:
-		pad3->scale(1);
+		this->pad3->scale(1);
 		break;
 	default:
 		break;
@@ -102,13 +109,13 @@ void GamePlayActivity::keyup_func(wxKeyEvent & event)
 {
 	switch (event.GetKeyCode()) {
 	case WXK_LEFT:
-		pad1->scale(.8F);
+		this->pad1->scale(.8F);
 		break;
 	case WXK_DOWN:
-		pad2->scale(.8F);
+		this->pad2->scale(.8F);
 		break;
 	case WXK_RIGHT:
-		pad3->scale(.8F);
+		this->pad3->scale(.8F);
 		break;
 	default:
 		break;

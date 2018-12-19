@@ -18,6 +18,9 @@ public:
 
 	void slide_in_func(wxTimerEvent & event);
 	void gamestart_func(wxTimerEvent & event);
+
+	void OnKeyDown(wxKeyEvent& event);
+
 	void keydown_func(wxKeyEvent& event);
 	void keyup_func(wxKeyEvent& event);
 
