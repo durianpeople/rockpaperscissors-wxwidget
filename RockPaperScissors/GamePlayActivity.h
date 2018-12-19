@@ -15,6 +15,7 @@ class GamePlayActivity :
 
 	int x_pos = 450, gspap = 0, bmgap = 250;
 	void drawGameSet();
+	Object* putObject(Object* o);
 public:
 	GamePlayActivity(wxWindow* parent);
 

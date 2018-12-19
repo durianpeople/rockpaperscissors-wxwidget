@@ -8,22 +8,20 @@
 
 void GamePlayActivity::drawGameSet()
 {
-	bg = new Object(this, wxT("..\\res\\bg_gameplay.png"), wxBITMAP_TYPE_PNG, { 0,0 }, { 450,800 });
-	pad1 = new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { -5,620 }, { 160,160 }, .8F);
-	pad2 = new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { 140,620 }, { 160,160 }, .8F);
-	pad3 = new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { 290,620 }, { 160,160 }, .8F);
+	bg = putObject(new Object(this, wxT("..\\res\\bg_gameplay.png"), wxBITMAP_TYPE_PNG, { 0,0 }, { 450,800 }));
+	pad1 = putObject(new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { -5,620 }, { 160,160 }, .8F));
+	pad2 = putObject(new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { 140,620 }, { 160,160 }, .8F));
+	pad3 = putObject(new Object(this, wxT("..\\res\\pad.png"), wxBITMAP_TYPE_PNG, { 290,620 }, { 160,160 }, .8F));
 	
-	rock = new Object(this, wxT("..\\res\\rock.png"), wxBITMAP_TYPE_PNG, { -5,620 }, { 150,150 });
-	paper = new Object(this, wxT("..\\res\\paper.png"), wxBITMAP_TYPE_PNG, { 145,620 }, { 150,150 });
-	scissors = new Object(this, wxT("..\\res\\scissors.png"), wxBITMAP_TYPE_PNG, { 290,620 }, { 150,150 });
+	rock = putObject(new Object(this, wxT("..\\res\\rock.png"), wxBITMAP_TYPE_PNG, { -5,620 }, { 150,150 }));
+	paper = putObject(new Object(this, wxT("..\\res\\paper.png"), wxBITMAP_TYPE_PNG, { 145,620 }, { 150,150 }));
+	scissors = putObject(new Object(this, wxT("..\\res\\scissors.png"), wxBITMAP_TYPE_PNG, { 290,620 }, { 150,150 }));
+}
 
-	objects.push_back(bg);
-	objects.push_back(pad1);
-	objects.push_back(pad2);
-	objects.push_back(pad3);
-	objects.push_back(rock);
-	objects.push_back(paper);
-	objects.push_back(scissors);
+Object * GamePlayActivity::putObject(Object * o)
+{
+	objects.push_back(o);
+	return o;
 }
 
 GamePlayActivity::GamePlayActivity(wxWindow* parent) :
