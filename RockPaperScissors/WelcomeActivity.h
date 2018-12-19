@@ -4,12 +4,11 @@
 class WelcomeActivity :
 	public wxPanel
 {
-	wxWindow* parent;
-	wxTimer* closet;
-	wxBitmapButton* startbtn;
-	wxBitmapButton* highsbtn;
+	wxWindow *parent;
 public:
 	WelcomeActivity(wxWindow* parent);
+
+	//Button Function
 	void playnow(wxCommandEvent& event);
 
 DECLARE_EVENT_TABLE()

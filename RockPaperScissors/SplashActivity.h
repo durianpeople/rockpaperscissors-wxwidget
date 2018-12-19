@@ -6,13 +6,14 @@ class SplashActivity :
 	public wxPanel
 {
 	wxWindow* parent;
-	wxTimer* timer1;
-
-	float scale = 0;
-	wxTimer* animation;
+	wxTimer *timer1, *animation;
 	Object* bg;
+	
+	float scale = 0;
 public:
 	SplashActivity(wxWindow* parent);
+
+	//Timer function
 	void nextActivity(wxTimerEvent& event);
 	void anicall(wxTimerEvent& event);
 
