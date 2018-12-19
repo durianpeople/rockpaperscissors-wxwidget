@@ -123,6 +123,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="GamePlayActivity.h" />
+    <ClInclude Include="HighScoreActivity.h" />
+    <ClInclude Include="MainFrame.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="SplashActivity.h" />
     <ClInclude Include="template_wxbody.h" />
@@ -133,7 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GamePlayActivity.cpp" />
+    <ClCompile Include="HighScoreActivity.cpp" />
     <ClCompile Include="MainApp.cpp" />
+    <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="SplashActivity.cpp" />
     <ClCompile Include="WelcomeActivity.cpp" />
   </ItemGroup>

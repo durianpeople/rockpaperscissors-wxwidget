@@ -1,12 +1,9 @@
 #include "WelcomeActivity.h"
 #include "GamePlayActivity.h"
+#include "HighScoreActivity.h"
 #include "Object.h"
 
-#ifdef _DEBUG
-#pragma comment(lib, "wxbase31ud.lib")
-#else
-#pragma comment(lib, "wxbase31u.lib")
-#endif
+#include "template_wxbody.h"
 
 WelcomeActivity::WelcomeActivity(wxWindow * parent) :
 	wxPanel(parent, wxID_ANY, { 0,0 }, { 450,800 })
@@ -22,5 +19,11 @@ WelcomeActivity::WelcomeActivity(wxWindow * parent) :
 void WelcomeActivity::playnow(wxCommandEvent& event)
 {
 	new GamePlayActivity(parent);
+	this->Destroy();
+}
+
+void WelcomeActivity::highscore(wxCommandEvent & event)
+{
+	new HighScoreActivity(parent);
 	this->Destroy();
 }
