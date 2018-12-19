@@ -1,4 +1,5 @@
 #include "GamePlayActivity.h"
+#include <iostream>
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -37,15 +38,14 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	this->parent = parent;
 
 	//add event listener for parent
-	this->Bind(wxEVT_KEY_DOWN, &GamePlayActivity::keydown_func, this);
-	this->Bind(wxEVT_KEY_UP, &GamePlayActivity::keyup_func, this);
-	this->SetFocus();
-	
+	usingKeyboard = false;
+
 	drawGameSet();
 
 	slide_in_ani = new wxTimer(this, 31);
 	gamestart = new wxTimer(this, 32);
 	real_time_game = new wxTimer(this, 33);
+	keyboard_poll = new wxTimer(this, 34);
 
 	slide_in_ani->Start(2);
 }
@@ -87,7 +87,8 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 			pad1->scale(1);
 			pad2->scale(1);
 			pad3->scale(1);
-			real_time_game->Start(200);
+			real_time_game->Start(1);
+			keyboard_poll->Start(30);
 		}
 		break;
 	}
@@ -99,40 +100,39 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 
 void GamePlayActivity::real_time_game_func(wxTimerEvent & event)
 {
-	this->SetFocus();
-	this->redraw();
+	
 }
 
-void GamePlayActivity::keydown_func(wxKeyEvent & event)
+void GamePlayActivity::keyboard_poll_func(wxTimerEvent & event)
 {
-	switch (event.GetUnicodeKey()) {
-	case 'A':
-		this->pad1->scale(1);
-		break;
-	case 'S':
-		this->pad2->scale(1);
-		break;
-	case 'D':
-		this->pad3->scale(1);
-		break;
-	default:
-		break;
-	}
-}
+	keyboard_poll->Stop();
 
-void GamePlayActivity::keyup_func(wxKeyEvent & event)
-{
-	switch (event.GetUnicodeKey()) {
-	case 'A':
-		this->pad1->scale(.8F);
-		break;
-	case 'S':
-		this->pad2->scale(.8F);
-		break;
-	case 'D':
-		this->pad3->scale(.8F);
-		break;
-	default:
-		break;
+	if (!usingKeyboard) {
+		if (wxGetKeyState(wxKeyCode('A'))) {
+			this->pad1->scale(.8F);
+			usingKeyboard = true;
+			this->redraw();
+		}
+		else if (wxGetKeyState(wxKeyCode('S'))) {
+			this->pad2->scale(.8F);
+			usingKeyboard = true;
+			this->redraw();
+		}
+		else if (wxGetKeyState(wxKeyCode('D'))) {
+			this->pad3->scale(.8F);
+			usingKeyboard = true;
+			this->redraw();
+		}
 	}
+	else {
+		if (!wxGetKeyState(wxKeyCode('A')) && !wxGetKeyState(wxKeyCode('S')) && !wxGetKeyState(wxKeyCode('D'))) {
+			usingKeyboard = false;
+			this->pad1->scale(1);
+			this->pad2->scale(1);
+			this->pad3->scale(1);
+			this->redraw();
+		}			
+	}
+		std::cout << "Poll" << std::endl;
+	keyboard_poll->Start(30);
 }
