@@ -30,7 +30,6 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	this->parent = parent;
 
 	//add event listener for parent
-	//this->Bind(wxEVT_CHAR_HOOK, &GamePlayActivity::OnKeyDown, this);
 	this->Bind(wxEVT_KEY_DOWN, &GamePlayActivity::keydown_func, this);
 	this->Bind(wxEVT_KEY_UP, &GamePlayActivity::keyup_func, this);
 	this->SetFocus();
@@ -39,6 +38,7 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 
 	slide_in_ani = new wxTimer(this, 31);
 	gamestart = new wxTimer(this, 32);
+	real_time_game = new wxTimer(this, 33);
 
 	slide_in_ani->Start(2);
 }
@@ -89,9 +89,9 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 	gspap += gspap >= 2 ? -2 : 1;
 }
 
-void GamePlayActivity::OnKeyDown(wxKeyEvent & event)
+void GamePlayActivity::real_time_game_func(wxTimerEvent & event)
 {
-	int i = 1;
+	//Realtime gameplay here
 }
 
 void GamePlayActivity::keydown_func(wxKeyEvent & event)
