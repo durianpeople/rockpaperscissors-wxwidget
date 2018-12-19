@@ -24,6 +24,13 @@ Object * GamePlayActivity::putObject(Object * o)
 	return o;
 }
 
+void GamePlayActivity::redraw()
+{
+	for (Object* it : objects) {
+		it->paintNow();
+	}
+}
+
 GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	wxPanel(parent, wxID_ANY, { x_pos,0 }, { 450,800 })
 {
