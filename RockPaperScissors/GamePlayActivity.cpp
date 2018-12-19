@@ -16,6 +16,14 @@ void GamePlayActivity::drawGameSet()
 	rock = new Object(this, wxT("..\\res\\rock.png"), wxBITMAP_TYPE_PNG, { -5,620 }, { 150,150 });
 	paper = new Object(this, wxT("..\\res\\paper.png"), wxBITMAP_TYPE_PNG, { 145,620 }, { 150,150 });
 	scissors = new Object(this, wxT("..\\res\\scissors.png"), wxBITMAP_TYPE_PNG, { 290,620 }, { 150,150 });
+
+	objects.push_back(bg);
+	objects.push_back(pad1);
+	objects.push_back(pad2);
+	objects.push_back(pad3);
+	objects.push_back(rock);
+	objects.push_back(paper);
+	objects.push_back(scissors);
 }
 
 GamePlayActivity::GamePlayActivity(wxWindow* parent) :
@@ -26,7 +34,7 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	//add event listener for parent
 	//this->Bind(wxEVT_CHAR_HOOK, &GamePlayActivity::OnKeyDown, this);
 	this->Bind(wxEVT_KEY_DOWN, &GamePlayActivity::keydown_func, this);
-	//this->Bind(wxEVT_KEY_UP, &GamePlayActivity::keyup_func, this);
+	this->Bind(wxEVT_KEY_UP, &GamePlayActivity::keyup_func, this);
 	this->SetFocus();
 	
 	drawGameSet();
@@ -90,14 +98,14 @@ void GamePlayActivity::OnKeyDown(wxKeyEvent & event)
 
 void GamePlayActivity::keydown_func(wxKeyEvent & event)
 {
-	switch (event.GetKeyCode()) {
-	case WXK_LEFT:
+	switch (event.GetUnicodeKey()) {
+	case 'A':
 		this->pad1->scale(1);
 		break;
-	case WXK_DOWN:
+	case 'S':
 		this->pad2->scale(1);
 		break;
-	case WXK_RIGHT:
+	case 'D':
 		this->pad3->scale(1);
 		break;
 	default:
@@ -107,14 +115,14 @@ void GamePlayActivity::keydown_func(wxKeyEvent & event)
 
 void GamePlayActivity::keyup_func(wxKeyEvent & event)
 {
-	switch (event.GetKeyCode()) {
-	case WXK_LEFT:
+	switch (event.GetUnicodeKey()) {
+	case 'A':
 		this->pad1->scale(.8F);
 		break;
-	case WXK_DOWN:
+	case 'S':
 		this->pad2->scale(.8F);
 		break;
-	case WXK_RIGHT:
+	case 'D':
 		this->pad3->scale(.8F);
 		break;
 	default:

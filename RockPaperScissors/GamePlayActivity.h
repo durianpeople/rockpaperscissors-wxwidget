@@ -1,6 +1,7 @@
 #pragma once
 #include "template_wxheader.h"
 #include "Object.h"
+#include <vector>
 
 class GamePlayActivity :
 	public wxPanel
@@ -10,6 +11,7 @@ class GamePlayActivity :
 	wxPanel *scorebar;
 	wxTimer *slide_in_ani, *gamestart;
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
+	std::vector<Object*> objects;
 
 	int x_pos = 450, gspap = 0, bmgap = 250;
 	void drawGameSet();
