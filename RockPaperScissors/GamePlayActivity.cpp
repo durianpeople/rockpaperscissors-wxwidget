@@ -22,6 +22,10 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	wxPanel(parent, wxID_ANY, { x_pos,0 }, { 450,800 })
 {
 	this->parent = parent;
+
+	//add event listener for parent
+	parent->Connect(wxEVT_KEY_DOWN, wxKeyEventHandler(GamePlayActivity::keydown_func));
+	parent->Connect(wxEVT_KEY_UP, wxKeyEventHandler(GamePlayActivity::keyup_func));
 	
 	drawGameSet();
 
@@ -75,4 +79,38 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 	paper->scale(1);
 	scissors->scale(1);
 	gspap += gspap >= 2 ? -2 : 1;
+}
+
+void GamePlayActivity::keydown_func(wxKeyEvent & event)
+{
+	switch (event.GetKeyCode()) {
+	case WXK_LEFT:
+		pad1->scale(1);
+		break;
+	case WXK_DOWN:
+		pad2->scale(1);
+		break;
+	case WXK_RIGHT:
+		pad3->scale(1);
+		break;
+	default:
+		break;
+	}
+}
+
+void GamePlayActivity::keyup_func(wxKeyEvent & event)
+{
+	switch (event.GetKeyCode()) {
+	case WXK_LEFT:
+		pad1->scale(.8F);
+		break;
+	case WXK_DOWN:
+		pad2->scale(.8F);
+		break;
+	case WXK_RIGHT:
+		pad3->scale(.8F);
+		break;
+	default:
+		break;
+	}
 }
