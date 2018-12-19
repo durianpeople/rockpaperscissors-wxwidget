@@ -1,6 +1,5 @@
 #include "MainApp.h"
 #include "SplashActivity.h"
-#include "MainFrame.h"
 #include <iostream>
 #include <fstream>
 
@@ -13,7 +12,7 @@
 bool MainApp::OnInit() {
 	wxDisableAsserts();
 	wxInitAllImageHandlers();
-	mainFrame = new MainFrame(this);
+	mainFrame = new wxFrame(NULL, wxID_ANY, L"Rock Paper Scissors", wxDefaultPosition, { 450,800 }, wxCLOSE_BOX | wxCAPTION | wxCLIP_CHILDREN);
 	mainFrame->Center();
 	mainFrame->SetBackgroundColour(wxColor("black"));
 	mainFrame->Show();

@@ -1,5 +1,7 @@
 #include "GamePlayActivity.h"
 #include <iostream>
+#include <iostream>
+#include <fstream>
 
 #ifdef _DEBUG
 #pragma comment(lib, "wxbase31ud.lib")
@@ -48,6 +50,8 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 	keyboard_poll = new wxTimer(this, 34);
 
 	slide_in_ani->Start(2);
+
+	this->highscore = 0;
 }
 
 void GamePlayActivity::slide_in_func(wxTimerEvent & event)
@@ -135,4 +139,18 @@ void GamePlayActivity::keyboard_poll_func(wxTimerEvent & event)
 	}
 		std::cout << "Poll" << std::endl;
 	keyboard_poll->Start(30);
+}
+
+void GamePlayActivity::setHighScore(int score)
+{
+	this->highscore = score;
+	std::ofstream file;
+	file.open("..\res\file.txt");
+	file << this->highscore;
+	file.close();
+}
+
+int GamePlayActivity::getHighScore()
+{
+	return this->highscore;
 }

@@ -7,13 +7,14 @@
 class Object : public wxPanel
 {
 	wxImage image;
-	wxBitmap resized;
-	int w, h;
+	wxBitmap resized, bmpImage;
+	int w, h, bmpSet = 0;
 	float scalenum = 1;
 	bool scalef = false;
 
 public:
 	Object(wxPanel* parent, wxString file, wxBitmapType format, const wxPoint& position, const wxSize &size, float scale = 1);
+	Object(wxPanel* parent, wxBitmap bmpImage, const wxPoint& position, const wxSize &size, float scale = 1);
 
 	void paintEvent(wxPaintEvent & evt);
 	void paintNow();
@@ -55,6 +56,19 @@ Object::Object(wxPanel* parent, wxString file, wxBitmapType format, const wxPoin
 {
 	// load the file... ideally add a check to see if loading was successful
 	image.LoadFile(file, format);
+	w = -1;
+	h = -1;
+	if (s != 1) {
+		this->scalenum = s;
+		scalef = true;
+	}
+}
+
+Object::Object(wxPanel * parent, wxBitmap bmpImage, const wxPoint & position, const wxSize & size, float s) :
+	wxPanel(parent, wxID_ANY, position, size)
+{
+	this->bmpImage = bmpImage;
+	bmpSet = 1;
 	w = -1;
 	h = -1;
 	if (s != 1) {
@@ -105,7 +119,8 @@ void Object::render(wxDC&  dc)
 
 	if (neww != w || newh != h || scalef)
 	{
-		resized = wxBitmap(image.Scale(neww * scalenum, newh * scalenum /*, wxIMAGE_QUALITY_HIGH*/));
+		if (!bmpSet) resized = wxBitmap(image.Scale(neww * scalenum, newh * scalenum /*, wxIMAGE_QUALITY_HIGH*/));
+		else resized = this->bmpImage;
 		w = neww;
 		h = newh;
 		if (scalef) {

@@ -3,8 +3,11 @@
 
 class HighScoreActivity : public wxPanel
 {
-public:
-	wxWindow *parent;
+private:
+	void setHighScore(int score);
+	int getHighScore();
+	wxWindow* parent;
+	int highscore;
 public:
 	HighScoreActivity(wxWindow* parent);
 

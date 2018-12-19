@@ -19,6 +19,10 @@ class GamePlayActivity :
 	void redraw();
 
 	bool usingKeyboard;
+
+	void setHighScore(int score);
+	int getHighScore();
+	int highscore;
 public:
 	GamePlayActivity(wxWindow* parent);
 
