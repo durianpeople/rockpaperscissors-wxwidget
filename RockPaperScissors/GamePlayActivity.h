@@ -6,11 +6,12 @@ class GamePlayActivity :
 	public wxPanel
 {
 	wxWindow* parent;
-
+	
+	wxPanel *scorebar;
 	wxTimer *slide_in_ani, *gamestart;
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
 
-	int x_pos = 450, gspap = 0, bmgap = 450;
+	int x_pos = 450, gspap = 0, bmgap = 250;
 	void drawGameSet();
 public:
 	GamePlayActivity(wxWindow* parent);

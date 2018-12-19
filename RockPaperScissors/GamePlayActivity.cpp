@@ -27,7 +27,8 @@ GamePlayActivity::GamePlayActivity(wxWindow* parent) :
 
 	slide_in_ani = new wxTimer(this, 31);
 	gamestart = new wxTimer(this, 32);
-	slide_in_ani->Start(3);
+
+	slide_in_ani->Start(2);
 }
 
 void GamePlayActivity::slide_in_func(wxTimerEvent & event)
@@ -58,7 +59,7 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 		pad1->scale(.8F);
 		pad2->scale(.8F);
 		pad3->scale(1);
-		bmgap-=100;
+		bmgap-=bmgap/4;
 		gamestart->Stop();
 		if (bmgap > 50) {
 			gamestart->Start(bmgap);
@@ -70,7 +71,6 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 		}
 		break;
 	}
-
 	rock->scale(1);
 	paper->scale(1);
 	scissors->scale(1);
