@@ -12,11 +12,12 @@ HighScoreActivity::HighScoreActivity(wxWindow * parent) :
 	this->SetBackgroundColour(wxColor("green"));
 
 	//buttons
-	new wxButton(this, 31, L"Back", wxDefaultPosition, wxDefaultSize);
+	new wxButton(this, 31, wxString(wxString::Format("%d",this->getHighScore())), wxDefaultPosition, wxDefaultSize);
 	this->SetFocus();
 	this->highscore = 0;
 
 	wxMemoryDC dc;
+	dc.SetBackgroundMode(wxSOLID);
 	dc.SetPen(wxPen(wxColor("black")));
 	dc.DrawText("Test",wxPoint(0,0));
 	wxBitmap text = dc.GetAsBitmap();
@@ -28,6 +29,7 @@ HighScoreActivity::HighScoreActivity(wxWindow * parent) :
 
 void HighScoreActivity::back(wxCommandEvent & event)
 {
+	this->setHighScore(this->getHighScore()+1);
 	new WelcomeActivity(parent);
 	this->Destroy();
 }
@@ -36,12 +38,19 @@ void HighScoreActivity::setHighScore(int score)
 {
 	this->highscore = score;
 	std::ofstream file;
-	file.open("..\res\file.txt");
+	file.open("..\\res\\file.txt");
 	file << this->highscore;
 	file.close();
 }
 
 int HighScoreActivity::getHighScore()
 {
+	std::ifstream file("..\\res\\file.txt");
+	if (file && file.peek() != std::ifstream::traits_type::eof()) {
+		file >> this->highscore;
+	}
+	else {
+		this->highscore = 0;
+	}
 	return this->highscore;
 }

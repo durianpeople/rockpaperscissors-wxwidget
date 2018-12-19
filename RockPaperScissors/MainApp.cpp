@@ -21,7 +21,7 @@ bool MainApp::OnInit() {
 	mainFrame->Refresh();
 
 	//Load highscore
-	std::ifstream file ("..\res\file.txt");
+	std::ifstream file ("..\\res\\file.txt");
 	if (file && file.peek() != std::ifstream::traits_type::eof()) {
 		file >> this->highscore;
 	}
@@ -36,13 +36,20 @@ void MainApp::setHighScore(int score)
 {
 	this->highscore = score;
 	std::ofstream file;
-	file.open("..\res\file.txt");
+	file.open("..\\res\\file.txt");
 	file << this->highscore;
 	file.close();
 }
 
 int MainApp::getHighScore()
 {
+	std::ifstream file("..\\res\\file.txt");
+	if (file && file.peek() != std::ifstream::traits_type::eof()) {
+		file >> this->highscore;
+	}
+	else {
+		this->highscore = 0;
+	}
 	return this->highscore;
 }
 

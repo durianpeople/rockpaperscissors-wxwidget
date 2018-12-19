@@ -145,12 +145,19 @@ void GamePlayActivity::setHighScore(int score)
 {
 	this->highscore = score;
 	std::ofstream file;
-	file.open("..\res\file.txt");
+	file.open("..\\res\\file.txt");
 	file << this->highscore;
 	file.close();
 }
 
 int GamePlayActivity::getHighScore()
 {
+	std::ifstream file("..\\res\\file.txt");
+	if (file && file.peek() != std::ifstream::traits_type::eof()) {
+		file >> this->highscore;
+	}
+	else {
+		this->highscore = 0;
+	}
 	return this->highscore;
 }
