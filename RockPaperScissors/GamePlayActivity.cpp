@@ -87,6 +87,7 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 			pad1->scale(1);
 			pad2->scale(1);
 			pad3->scale(1);
+			real_time_game->Start(200);
 		}
 		break;
 	}
@@ -98,7 +99,8 @@ void GamePlayActivity::gamestart_func(wxTimerEvent & event)
 
 void GamePlayActivity::real_time_game_func(wxTimerEvent & event)
 {
-	//Realtime gameplay here
+	this->SetFocus();
+	this->redraw();
 }
 
 void GamePlayActivity::keydown_func(wxKeyEvent & event)
