@@ -20,7 +20,7 @@ public:
 	void paintNow();
 	void OnSize(wxSizeEvent& event);
 	void render(wxDC& dc);
-	virtual void scale(float scale);
+	virtual void scale(float scale, bool drawnow);
 	virtual void move(wxPoint pt);
 	bool collideWith(Object* obj);
 
@@ -135,11 +135,11 @@ void Object::render(wxDC&  dc)
 	}
 }
 
-void Object::scale(float s)
+void Object::scale(float s, bool drawNow = true)
 {
 	this->scalenum = s;
 	scalef = true;
-	paintNow();
+	if(drawNow) paintNow();
 }
 
 inline void Object::move(wxPoint pt)

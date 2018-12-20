@@ -14,18 +14,13 @@ class GamePlayActivity :
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
 	std::list<Object*> objects;
 	std::list<FallingObject*> fallings;
+	int gspap = 0, bmgap = 250, highscore = 0, x_pos, usingKeyboard = NULL;
 
-	int x_pos = 450, gspap = 0, bmgap = 250;
-	void drawGameSet();
 	Object* putObject(Object* o);
 	FallingObject* putFalling(FallingObject * o);
+	void drawGameSet();
 	void redraw();
-
-	bool usingKeyboard;
-
 	void setHighScore(int score);
-	int getHighScore();
-	int highscore;
 public:
 	GamePlayActivity(wxWindow* parent);
 
