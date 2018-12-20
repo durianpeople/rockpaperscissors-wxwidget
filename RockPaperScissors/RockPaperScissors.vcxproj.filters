@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Activity">
+      <UniqueIdentifier>{f3880256-28db-46f0-bbf0-7a9ec7800878}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{7c095f5f-9b82-40dc-93f7-e141f43083a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Activity">
+      <UniqueIdentifier>{d64f958d-0c04-4d58-9d71-816adcb7266f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{40339828-210b-4145-a3ea-885357c8ea16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainApp.h">
@@ -27,61 +39,61 @@
     <ClInclude Include="template_wxbody.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SplashActivity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WelcomeActivity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Activity</Filter>
     </ClInclude>
     <ClInclude Include="GamePlayActivity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Activity</Filter>
     </ClInclude>
     <ClInclude Include="HighScoreActivity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Activity</Filter>
+    </ClInclude>
+    <ClInclude Include="WelcomeActivity.h">
+      <Filter>Header Files\Activity</Filter>
     </ClInclude>
     <ClInclude Include="FallingObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
-    <ClInclude Include="RockObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="PaperObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RockObject.h">
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
     <ClInclude Include="ScissorsObject.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SplashActivity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WelcomeActivity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlayActivity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HighScoreActivity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="FallingObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RockObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="PaperObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RockObject.cpp">
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
     <ClCompile Include="ScissorsObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePlayActivity.cpp">
+      <Filter>Source Files\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="HighScoreActivity.cpp">
+      <Filter>Source Files\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashActivity.cpp">
+      <Filter>Source Files\Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="WelcomeActivity.cpp">
+      <Filter>Source Files\Activity</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
