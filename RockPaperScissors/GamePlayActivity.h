@@ -12,17 +12,12 @@ class GamePlayActivity :
 	wxTimer *slide_in_ani, *gamestart, *real_time_game, *keyboard_poll;
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
 	std::vector<Object*> objects;
+	int gspap = 0, bmgap = 250, highscore = 0, x_pos, usingKeyboard = NULL;
 
-	int x_pos = 450, gspap = 0, bmgap = 250;
-	void drawGameSet();
 	Object* putObject(Object* o);
+	void drawGameSet();
 	void redraw();
-
-	bool usingKeyboard;
-
 	void setHighScore(int score);
-	int getHighScore();
-	int highscore;
 public:
 	GamePlayActivity(wxWindow* parent);
 
