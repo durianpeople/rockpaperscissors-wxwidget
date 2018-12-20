@@ -5,5 +5,6 @@ class RockObject :
 {
 public:
 	RockObject(wxPanel* parent, int lane);
+	bool compete();
 };
 

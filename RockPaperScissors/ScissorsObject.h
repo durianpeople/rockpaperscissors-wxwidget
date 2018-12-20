@@ -5,5 +5,6 @@ class ScissorsObject :
 {
 public:
 	ScissorsObject(wxPanel* parent, int lane);
+	bool compete();
 };
 

@@ -141,6 +141,7 @@
     <ClCompile Include="GamePlayActivity.cpp" />
     <ClCompile Include="HighScoreActivity.cpp" />
     <ClCompile Include="MainApp.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PaperObject.cpp" />
     <ClCompile Include="RockObject.cpp" />
     <ClCompile Include="ScissorsObject.cpp" />

@@ -95,6 +95,9 @@
     <ClCompile Include="WelcomeActivity.cpp">
       <Filter>Source Files\Activity</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="RockPaperScissors.rc">
