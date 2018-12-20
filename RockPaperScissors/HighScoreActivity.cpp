@@ -12,16 +12,11 @@ HighScoreActivity::HighScoreActivity(wxWindow * parent) :
 	this->SetBackgroundColour(wxColor("green"));
 
 	//buttons
-	new wxButton(this, 31, wxString(wxString::Format("%d",this->getHighScore())), wxDefaultPosition, wxDefaultSize);
+	new wxButton(this, 31, wxT("Back"), wxDefaultPosition, wxDefaultSize);
 	this->SetFocus();
 	this->highscore = 0;
 
-	wxMemoryDC dc;
-	dc.SetBackgroundMode(wxSOLID);
-	dc.SetPen(wxPen(wxColor("black")));
-	dc.DrawText("Test",wxPoint(0,0));
-	wxBitmap text = dc.GetAsBitmap();
-	new Object(this, text, wxPoint(50, 50), wxSize(100,100));
+	new wxTextCtrl(this, wxID_ANY, wxT("Highscore"), wxPoint(50,50));
 
 	//wxMemoryDC dc;
 	//wxString score = wxString::Format("%d", parent->parent->highscore);
