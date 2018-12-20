@@ -14,7 +14,7 @@ class GamePlayActivity :
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
 	std::list<Object*> objects;
 	std::list<FallingObject*> fallings;
-	int gspap = 0, bmgap = 250, highscore = 0, x_pos, usingKeyboard = NULL, random_interval = 3000;
+	int gspap = 0, bmgap = 250, highscore = 0, x_pos, usingKeyboard = NULL, random_interval = 3000, score = 0;
 
 	Object* putObject(Object* o);
 	FallingObject* putFalling(FallingObject * o);
