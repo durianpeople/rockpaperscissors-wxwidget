@@ -27,6 +27,11 @@ Object * GamePlayActivity::putObject(Object * o)
 	return o;
 }
 
+FallingObject * GamePlayActivity::putFalling(FallingObject * o) {
+	fallings.push_back(o);
+	return o;
+}
+
 void GamePlayActivity::redraw()
 {
 	for (Object* it : objects) {

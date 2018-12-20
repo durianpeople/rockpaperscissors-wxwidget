@@ -122,9 +122,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="FallingObject.h" />
     <ClInclude Include="GamePlayActivity.h" />
     <ClInclude Include="HighScoreActivity.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PaperObject.h" />
+    <ClInclude Include="RockObject.h" />
+    <ClInclude Include="ScissorsObject.h" />
     <ClInclude Include="SplashActivity.h" />
     <ClInclude Include="template_wxbody.h" />
     <ClInclude Include="template_wxheader.h" />
@@ -133,9 +137,13 @@
     <ClInclude Include="WelcomeActivity.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FallingObject.cpp" />
     <ClCompile Include="GamePlayActivity.cpp" />
     <ClCompile Include="HighScoreActivity.cpp" />
     <ClCompile Include="MainApp.cpp" />
+    <ClCompile Include="PaperObject.cpp" />
+    <ClCompile Include="RockObject.cpp" />
+    <ClCompile Include="ScissorsObject.cpp" />
     <ClCompile Include="SplashActivity.cpp" />
     <ClCompile Include="WelcomeActivity.cpp" />
   </ItemGroup>

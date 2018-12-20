@@ -1,7 +1,8 @@
 #pragma once
 #include "template_wxheader.h"
 #include "Object.h"
-#include <vector>
+#include "FallingObject.h"
+#include <list>
 
 class GamePlayActivity :
 	public wxPanel
@@ -11,11 +12,13 @@ class GamePlayActivity :
 	wxPanel *scorebar;
 	wxTimer *slide_in_ani, *gamestart, *real_time_game, *keyboard_poll;
 	Object *bg, *pad1, *pad2, *pad3, *rock, *paper, *scissors;
-	std::vector<Object*> objects;
+	std::list<Object*> objects;
+	std::list<FallingObject*> fallings;
 
 	int x_pos = 450, gspap = 0, bmgap = 250;
 	void drawGameSet();
 	Object* putObject(Object* o);
+	FallingObject* putFalling(FallingObject * o);
 	void redraw();
 
 	bool usingKeyboard;
