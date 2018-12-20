@@ -150,7 +150,7 @@ inline void Object::move(wxPoint pt)
 inline bool Object::collideWith(Object * obj)
 {
 	if ((this->GetPosition().x <= obj->GetPosition().x && obj->GetPosition().x <= this->GetSize().x ||
-		this->GetPosition().x <= obj->GetSize().x && obj->GetSize().x <= this->GetSize().x) || 
+		this->GetPosition().x <= obj->GetSize().x && obj->GetSize().x <= this->GetSize().x) &&  
 		(this->GetPosition().y <= obj->GetPosition().y && obj->GetPosition().y <= this->GetSize().y ||
 			this->GetPosition().y <= obj->GetSize().y && obj->GetSize().y <= this->GetSize().y)) {
 		return true;
